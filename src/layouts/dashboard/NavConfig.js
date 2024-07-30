@@ -9,38 +9,89 @@ const navConfig = [
   {
     title: 'dashboard',
     path: '/dashboard/app',
-    icon: getIcon('eva:pie-chart-2-fill'),
+    icon: getIcon('material-symbols-light:dashboard'),
   },
   {
-    title: 'user',
+    title: 'Categories',
     path: '/dashboard/user',
-    icon: getIcon('eva:people-fill'),
+    icon: getIcon('tabler:category'),
   },
   {
-    title: 'product',
+    title: 'Blogs',
     path: '/dashboard/products',
-    icon: getIcon('eva:shopping-bag-fill'),
+    icon: getIcon('ic:twotone-post-add'),
   },
   {
-    title: 'blog',
+    title: 'Rss',
     path: '/dashboard/blog',
     icon: getIcon('eva:file-text-fill'),
   },
   {
-    title: 'login',
-    path: '/login',
-    icon: getIcon('eva:lock-fill'),
+    title: 'Ads',
+    path: '/dashboard/app',
+    icon: getIcon('material-symbols-light:dashboard'),
   },
   {
-    title: 'register',
-    path: '/register',
-    icon: getIcon('eva:person-add-fill'),
+    title: 'News Api',
+    path: '/dashboard/user',
+    icon: getIcon('tabler:category'),
   },
   {
-    title: 'Not found',
-    path: '/404',
-    icon: getIcon('eva:alert-triangle-fill'),
+    title: 'Live News',
+    path: '/dashboard/products',
+    icon: getIcon('ic:twotone-post-add'),
   },
+  {
+    title: 'E-paper',
+    path: '/dashboard/blog',
+    icon: getIcon('eva:file-text-fill'),
+  },
+  
+  {
+    title: 'Visibility',
+    path: '/dashboard/products',
+    icon: getIcon('arcticons:visible'),
+  },
+  {
+    title: 'CMS',
+    path: '/dashboard/blog',
+    icon: getIcon('flowbite:users-solid'),
+  },
+  {
+    title: 'Search Log',
+    path: '/dashboard/app',
+    icon: getIcon("ic:baseline-search"),
+  },
+  {
+    title: 'Users',
+    path: '/dashboard/user',
+    icon: getIcon('flowbite:users-solid'),
+  },
+  {
+    title: 'Settings',
+    path: '/dashboard/products',
+    icon: getIcon('ic:baseline-settings'),
+  },
+  {
+    title: 'Localization',
+    path: '/dashboard/blog',
+    icon: getIcon('heroicons:language-solid'),
+  },
+  // {
+  //   title: 'login',
+  //   path: '/login',
+  //   icon: getIcon('eva:lock-fill'),
+  // },
+  // {
+  //   title: 'register',
+  //   path: '/register',
+  //   icon: getIcon('eva:person-add-fill'),
+  // },
+  // {
+  //   title: 'Not found',
+  //   path: '/404',
+  //   icon: getIcon('eva:alert-triangle-fill'),
+  // },
 ];
 
 export default navConfig;
