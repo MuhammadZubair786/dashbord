@@ -13,53 +13,53 @@ const navConfig = [
   },
   {
     title: 'Categories',
-    path: '/dashboard/user',
+    path: '/dashboard/Categories',
     icon: getIcon('tabler:category'),
   },
   {
     title: 'Blogs',
-    path: '/dashboard/products',
+    path: '/dashboard/Blogs',
     icon: getIcon('ic:twotone-post-add'),
   },
   {
     title: 'Rss',
-    path: '/dashboard/blog',
+    path: '/dashboard/Rss',
     icon: getIcon('eva:file-text-fill'),
   },
   {
     title: 'Ads',
-    path: '/dashboard/app',
+    path: '/dashboard/Ads',
     icon: getIcon('material-symbols-light:dashboard'),
   },
   {
     title: 'News Api',
-    path: '/dashboard/user',
+    path: '/dashboard/News',
     icon: getIcon('tabler:category'),
   },
   {
     title: 'Live News',
-    path: '/dashboard/products',
+    path: '/dashboard/Live',
     icon: getIcon('ic:twotone-post-add'),
   },
   {
     title: 'E-paper',
-    path: '/dashboard/blog',
+    path: '/dashboard/E-paper',
     icon: getIcon('eva:file-text-fill'),
   },
   
   {
     title: 'Visibility',
-    path: '/dashboard/products',
+    path: '/dashboard/Visibility',
     icon: getIcon('arcticons:visible'),
   },
   {
     title: 'CMS',
-    path: '/dashboard/blog',
+    path: '/dashboard/CMS',
     icon: getIcon('flowbite:users-solid'),
   },
   {
     title: 'Search Log',
-    path: '/dashboard/app',
+    path: '/dashboard/Search',
     icon: getIcon("ic:baseline-search"),
   },
   {
