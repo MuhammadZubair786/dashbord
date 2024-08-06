@@ -1,8 +1,12 @@
 import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container, Typography, Box, Button, TextField, OutlinedInput } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 // components
+import CategoryList from '../components/CategoryList';
+import CategoryTable from '../components/CategoryTable';
+
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
 // sections
@@ -16,35 +20,176 @@ import {
   AppWidgetSummary,
   AppCurrentSubject,
   AppConversionRates,
+  AppLoginChart,
+  AppUserStatics,
 } from '../sections/@dashboard/app';
-
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
   const theme = useTheme();
 
+  const rows = [
+    {
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-MB8Fpvp40mR6m856c5sKfsAQLxwhZ15oXOpEXl_LbAeDcGacnnrw0DOmIztSNOARvgY&usqp=CAU',
+      mainCategories: 159,
+      fat: 6.0,
+      name: "Entertainment",
+      blogCount: 4,
+      mostSelected: 4
+    },
+    {
+      image: 'https://assets.thehansindia.com/h-upload/2021/07/31/1092805-tech.webp',
+      mainCategories: 237,
+      fat: 9.0,
+      name: "Tech",
+      blogCount: 10,
+      mostSelected: 4
+
+    },
+    {
+      image: 'https://img.freepik.com/free-photo/medium-shot-man-wearing-vr-glasses_23-2149126949.jpg?size=626&ext=jpg&ga=GA1.1.1393156666.1720775880&semt=sph',
+      mainCategories: 262,
+      fat: 16.0,
+      name: "Tech",
+      blogCount: 6,
+      mostSelected: 6
+    },
+    {
+      image: 'https://img.freepik.com/free-vector/science-lab-objects_23-2148488312.jpg?size=626&ext=jpg&ga=GA1.1.1393156666.1720775880&semt=sph',
+      mainCategories: 305,
+      fat: 3.7,
+      name: "Science",
+      blogCount: 4,
+      mostSelected: 8
+    },
+    {
+      image: 'https://img.freepik.com/free-vector/science-lab-objects_23-2148488312.jpg?size=626&ext=jpg&ga=GA1.1.1393156666.1720775880&semt=sph',
+      mainCategories: 356,
+      fat: 16.0,
+      name: "Science",
+      blogCount: 3,
+      mostSelected: 4
+    }
+  ];
+
   return (
     <Page title="Dashboard">
-      <Container maxWidth="xl">
-       
+      <Container maxWidth="xl" sx={{
+        backgroundColor: "#F8F7FA"
+      }}>
+
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Blogs" total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Total Blogs" total={123} icon={'ant-design:menu-outlined'}
+              sx={{ color: '#1F09FF', backgroundColor: "rgba(234, 232, 253, 1)" }}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Quotes" total={1352831} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title="Total Quotes" total={0} icon={'ant-design:container-outlined'}
+              color='error'
+              sx={{ color: "#FF9F43", backgroundColor: "rgba(255, 159, 67, 0.2)" }}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Categories" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Total Categories" total={7} icon={'ant-design:appstore-outlined'}
+              sx={{ color: "#EA5455", backgroundColor: "rgba(234, 84, 85, 0.2)" }}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Total Users" total={234} color="error" icon={'ant-design:bug-filled'} />
+            <AppWidgetSummary title="Total Users" total={765} color="error" icon={'ant-design:user'} sx={{ backgroundColor: "rgba(0, 207, 232, 0.2)", color: "#00CFE8" }} />
           </Grid>
 
+          <Grid container item xs={12} md={6} lg={12} sx={{ my: 5, mx: 0, p: 0 }}>
+
+            <Grid item xs={12} md={6} lg={4.5} sx={{ backgroundColor: "white", p: 2, borderRadius: "6px", }}>
+              <Box sx={{ mb: 5 }}>
+                <Typography sx={{ fontSize: "20px", fontWeight: "500" }}>
+                  User by login methods
+                </Typography>
+              </Box>
+              <AppLoginChart data={[60, 40]} labels={["Google", "E-mail"]} colors={["#EA4335", "#28DAC6"]} />
+            </Grid>
+
+            <Grid item xs={12} md={6} lg={7} sx={{ backgroundColor: "white", p: 2, borderRadius: "6px", ml: 2 }}>
+              <Box sx={{ mb: 5 }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                  <Box>
+                    <Typography sx={{ fontSize: "20px", fontWeight: "500" }}>
+                      User Statistics
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <OutlinedInput
+                      value={"2024-07-01 00:00 to 2024-07-18 00:00"}
+                      placeholder=""
+                      sx={{
+                        height: "40px",
+                        border: "1px solid #00000040",
+                        '&.Mui-focused': {
+                          border: "none", // Remove border on focus
+                          outline: "none", // Remove outline on focus
+                        },
+                        '& .MuiOutlinedInput-notchedOutline': {
+                          borderColor: 'transparent', // Make the default border transparent
+                        },
+                        '& .MuiOutlinedInput-root': {
+                          '&.Mui-focused fieldset': {
+                            borderColor: 'transparent', // Remove border on focus
+                            outline: "none", // Remove outline on focus
+                          },
+                        },
+                        fontSize: "10px",
+                        width: "200px",
+                        mx: 1
+                        // borderRadius: "0px"
+                      }}
+                    />
+                    <Button
+                      sx={{
+                        backgroundColor: "#7367F0",
+                        color: "white",
+                        height: "40px",
+                        '&:hover': {
+                          backgroundColor: "#7367F0", // Maintain the same background color on hover
+                          boxShadow: 'none', // Remove any potential shadow effect
+                        },
+                      }}
+                    >
+                      <SearchIcon />
+                    </Button>
+                  </Box>
+                </Box>
+              </Box>
+              <AppUserStatics />
+            </Grid>
+          </Grid>
+
+        </Grid>
+
+        <Grid item xs={12} md={12} lg={12} sx={{ my: 4, backgroundColor: "white", m: 0, borderRadius: "5px" }}>
+          {/* <Box> */}
+          <Typography sx={{ px: 2, pt: 4, pb: 2, fontSize: "20px", fontWeight: "500" }}>
+            Most Views Blogs
+          </Typography>
+          {/* </Box> */}
+          <CategoryTable rows={rows} />
+        </Grid>
+
+        <Grid item xs={12} md={12} lg={12} sx={{ my: 4, backgroundColor: "white", borderRadius: "5px" }}>
+          {/* <Box> */}
+          <Typography sx={{ px: 2, pt: 4, pb: 2, fontSize: "20px", fontWeight: "500" }}>
+            Most Selected Categories
+          </Typography>
+          {/* </Box> */}
+          <CategoryTable rows={rows} />
+        </Grid>
+
+
+        <Box sx={{ display: "none" }}>
           <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
               title="Website Visits"
@@ -206,7 +351,8 @@ export default function DashboardApp() {
               ]}
             />
           </Grid>
-        </Grid>
+        </Box>
+
       </Container>
     </Page>
   );

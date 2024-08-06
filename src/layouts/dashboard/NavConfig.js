@@ -13,7 +13,7 @@ const navConfig = [
   },
   {
     title: 'Categories',
-    path: '/dashboard/Categories',
+    path: '/dashboard/category',
     icon: getIcon('tabler:category'),
   },
   {
@@ -25,6 +25,16 @@ const navConfig = [
     title: 'Rss',
     path: '/dashboard/Rss',
     icon: getIcon('eva:file-text-fill'),
+    children: [
+      {
+        title: 'Rss Feed',
+        path: '/dashboard/Rss/feed1',
+      },
+      {
+        title: 'Rss Feed Items',
+        path: '/dashboard/Rss/feed2',
+      },
+    ],
   },
   {
     title: 'Ads',
@@ -46,7 +56,7 @@ const navConfig = [
     path: '/dashboard/E-paper',
     icon: getIcon('eva:file-text-fill'),
   },
-  
+
   {
     title: 'Visibility',
     path: '/dashboard/Visibility',

@@ -37,6 +37,8 @@ NavItem.propTypes = {
 function NavItem({ item, active }) {
   const theme = useTheme();
 
+  const { pathname } = useLocation();
+
   const isActiveRoot = active(item.path);
 
   const { title, path, icon, info, children } = item;
@@ -50,7 +52,7 @@ function NavItem({ item, active }) {
   const activeRootStyle = {
     color: 'white',
     fontWeight: 'fontWeightMedium',
-    bgcolor:"#9D94F5"
+    bgcolor: "#9D94F5"
     // bgcolor: alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
   };
 
@@ -77,7 +79,51 @@ function NavItem({ item, active }) {
           />
         </ListItemStyle>
 
-        <Collapse in={open} timeout="auto" unmountOnExit>
+        {children && (
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {children.map((childItem) => {
+                const { title, path } = childItem;
+                const isActiveSub = matchPath({ path, end: false }, pathname);
+
+                return (
+                  <ListItemStyle
+                    key={title}
+                    component={RouterLink}
+                    to={path}
+                    sx={{
+                      ...(isActiveSub && activeSubStyle),
+                    }}
+                  >
+                    <ListItemIconStyle>
+                      <Box
+                        component="span"
+                        sx={{
+                          width: 4,
+                          height: 4,
+                          display: 'flex',
+                          borderRadius: '50%',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          bgcolor: 'text.disabled',
+                          transition: (theme) => theme.transitions.create('transform'),
+                          ...(isActiveSub && {
+                            transform: 'scale(2)',
+                            bgcolor: 'primary.main',
+                          }),
+                        }}
+                      />
+                    </ListItemIconStyle>
+                    <ListItemText disableTypography primary={title} />
+                  </ListItemStyle>
+                );
+              })}
+            </List>
+          </Collapse>
+        )}
+
+
+        {/* <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {children.map((item) => {
               const { title, path } = item;
@@ -116,7 +162,7 @@ function NavItem({ item, active }) {
               );
             })}
           </List>
-        </Collapse>
+        </Collapse> */}
       </>
     );
   }
@@ -149,6 +195,7 @@ export default function NavSection({ navConfig, ...other }) {
     <Box {...other}>
       <List disablePadding sx={{ p: 1 }}>
         {navConfig.map((item) => (
+          // console.log(item)
           <NavItem key={item.title} item={item} active={match} />
         ))}
       </List>
