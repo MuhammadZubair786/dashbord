@@ -31,14 +31,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function CategoryTable({ rows }) {
     return (
-        <TableContainer component={Paper} sx={{ borderRadius: "0px", width: "100%" }}>
+        <TableContainer component={Paper} sx={{ borderRadius: "0px", width: "100%", }}>
             <Table aria-label="customized table">
                 <TableHead sx={{ backgroundColor: "#D9D9D9" }}>
                     <TableRow>
                         <StyledTableCell>ID</StyledTableCell>
                         <StyledTableCell align="center">IMAGE</StyledTableCell>
                         <StyledTableCell align="center">MAIN CATEGORY</StyledTableCell>
-                        <StyledTableCell align="center">image</StyledTableCell>
+                        <StyledTableCell align="center">NAME</StyledTableCell>
                         <StyledTableCell align="center">TOTAL BLOGS</StyledTableCell>
                     </TableRow>
                 </TableHead>

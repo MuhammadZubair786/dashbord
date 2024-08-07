@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography, Box, Button, TextField, OutlinedInput } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 // components
-import CategoryList from '../components/CategoryList';
+// import CategoryList from './CategoryList';
 import CategoryTable from '../components/CategoryTable';
 
 import Page from '../components/Page';

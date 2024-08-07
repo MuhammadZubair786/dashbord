@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Container,
   Box,
-  TextField,
   Button,
   Typography,
   Table,
@@ -12,7 +11,11 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Grid,
+  Tooltip,
 } from '@mui/material';
+import InputField from "../components/InputField";
+import { CustomFilledButton, CustomOutlinedButton } from '../components/Button';
 
 function Blogs() {
   // Sample data array
@@ -36,7 +39,7 @@ function Blogs() {
       publishDate: '2024-08-07',
       time: '12:00 PM',
       lastModified: '2024-08-06',
-      status: 'UnPaid',
+      status: 'UnPublished',
       action: 'Edit/Delete',
     },
     {
@@ -59,50 +62,67 @@ function Blogs() {
       publishDate: '2024-08-09',
       time: '02:00 PM',
       lastModified: '2024-08-08',
-      status: 'UnPaid',
+      status: 'UnPublished',
       action: 'Edit/Delete',
     },
   ];
+
   return (
     <Container>
-      <Box sx={{ bgcolor: 'white', p: 5, mb: 5, borderRadius: 2 }}>
+      <Box sx={{ bgcolor: 'white', p: 2, mb: 5, borderRadius: "5px" }}>
         {/* Heading */}
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ pl: 1 }}>
           Filters
         </Typography>
+
         {/* First Row */}
-        <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-          <TextField fullWidth label="Search Title" variant="outlined" />
-          <TextField fullWidth label="Select Category" variant="outlined" />
-          <TextField fullWidth label="Select Visibility" variant="outlined" />
-          <TextField fullWidth label="Status" variant="outlined" />
-        </Box>
+        <Grid container spacing={2} mb={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="Search Title" />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="Select Category" />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="Select Visibility" />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="Status" />
+          </Grid>
+        </Grid>
 
         {/* Second Row */}
-        <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-          <TextField sx={{ flex: 1 }} label="Type" variant="outlined" />
-          <TextField sx={{ flex: 1 }} label="" variant="outlined" type="datetime-local" />
-          <TextField sx={{ flex: 1 }} label="" variant="outlined" type="datetime-local" />
-          <Button sx={{ flex: '0 1 120px', bgcolor: '#7367F0', color: 'white' }}>Search</Button>
-          <Button variant="outlined" sx={{ flex: '0 1 120px', bgcolor: 'transparent' }}>
-            Reset
-          </Button>
-        </Box>
+        <Grid container spacing={2} mb={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="Type" />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="YYYY-MM-DD HH:MM AA" type="datetime-local" />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <InputField placeholder="YYYY-MM-DD HH:MM AA" type="datetime-local" />
+          </Grid>
+          <Grid item xs={6} sm={3} md={1.5}>
+            <CustomFilledButton title={"Search"} />
+          </Grid>
+          <Grid item xs={6} sm={3} md={1.5}>
+            <CustomOutlinedButton title={"Reset"} />
+          </Grid>
+        </Grid>
       </Box>
-
       {/* Gap between sections */}
       <Box sx={{ mb: 5 }} />
 
       {/* Table Container */}
-      <Box sx={{ bgcolor: 'white', p: 5, borderRadius: 2 }}>
+      <Box sx={{ bgcolor: 'white', borderRadius: "5px" }}>
         {/* Table Heading */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 4 }}>
           <Typography variant="h6">Blog List</Typography>
           <Typography variant="h6">Showing 1-20 of 131</Typography>
         </Box>
 
         {/* Table */}
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ width: '100%', borderRadius: 0 }}>
           <Table>
             <TableHead sx={{ bgcolor: '#D9D9D9' }}>
               <TableRow>
@@ -132,20 +152,27 @@ function Blogs() {
                   <TableCell>
                     <Box
                       sx={{
-                        backgroundColor: row.status === 'Published' ? 'green' : 'red',
+                        backgroundColor: row.status === 'Published' ? '#28C76F' : '#EA4335',
                         color: 'white',
-                        borderRadius: 1,
-                        p: 0.5,
+                        borderRadius: '6px', // Rounded badge
+                        padding: '0.2rem 0.6rem', // Padding to resemble a badge
                         textAlign: 'center',
-                        width: 'fit-content',
                         fontSize: '0.75rem', // Adjust this value as needed
+                        minWidth: 'fit-content',
+                        boxShadow: 'none', // Remove default button shadow
+                        '&:hover': {
+                          backgroundColor: row.status === 'Published' ? '#28C76F' : '#EA4335', // Slightly darker on hover
+                        },
                       }}
                     >
                       {row.status}
                     </Box>
                   </TableCell>
-
-                  <TableCell>{row.action}</TableCell>
+                  <TableCell>
+                    <Tooltip title={row.action}>
+                      <Button>{row.action}</Button>
+                    </Tooltip>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

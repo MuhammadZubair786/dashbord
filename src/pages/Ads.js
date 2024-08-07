@@ -2,8 +2,6 @@ import React from 'react';
 import {
   Container,
   Box,
-  TextField,
-  Button,
   Typography,
   Table,
   TableBody,
@@ -12,7 +10,10 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Grid,
 } from '@mui/material';
+import InputField from '../components/InputField';
+import { CustomFilledButton, CustomOutlinedButton } from '../components/Button';
 
 function Ads() {
   const sampleData = [
@@ -34,11 +35,12 @@ function Ads() {
     },
     // Add more objects as needed
   ];
+
   return (
     <Container>
-      <Box sx={{ bgcolor: 'white', p: { xs: 2, sm: 3, md: 4, lg: 5 }, mb: 5, borderRadius: 2 }}>
+      <Box sx={{ bgcolor: 'white', p: { xs: 2, sm: 3, md: 4 }, mb: 5, borderRadius: 2 }}>
         {/* Heading */}
-        <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 3 }}>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 2, pl: 1 }}>
           Filters
         </Typography>
 
@@ -52,68 +54,34 @@ function Ads() {
             flexWrap: 'wrap', // Allows wrapping if needed
           }}
         >
-          {/* First Input Field */}
-          <TextField
-            label="Search title"
-            variant="outlined"
-            sx={{ flex: '1 1 280', minWidth: { xs: '100%', sm: '200px' }, height: 56 }}
-          />
-
-          {/* Second Input Field */}
-          <TextField
-            label="Select Status"
-            variant="outlined"
-            sx={{ flex: '1 1 280', minWidth: { xs: '100%', sm: '200px', lg: '50px' }, height: 56 }}
-          />
-
-          {/* Button */}
-          <Button
-            sx={{
-              flex: '0 1 120px', // Set to a fixed width
-              bgcolor: '#7367F0',
-              color: 'white',
-              height: 54,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            Search
-          </Button>
-
-          <Button
-            variant="outlined"
-            sx={{
-              flex: '0 1 100%',
-              maxWidth: '120px',
-              bgcolor: 'transparent',
-              height: 54,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            Reset
-          </Button>
+          <Grid container spacing={2} mb={2}>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="Search title" />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="Select Status" />
+            </Grid>
+            <Grid item xs={6} sm={3} md={1.5}>
+              <CustomFilledButton title={"Search"} />
+            </Grid>
+            <Grid item xs={6} sm={3} md={1.5}>
+              <CustomOutlinedButton title={"Reset"} />
+            </Grid>
+          </Grid>
         </Box>
       </Box>
 
-      <Box sx={{ mb: 5 }} />
-
-      {/* Table Container */}
-      <Box sx={{ bgcolor: 'white', p: 5, borderRadius: 2 }}>
-        {/* Table Heading */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
+      <Box sx={{ bgcolor: 'white', borderRadius: 2, }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 3 }}>
           <Typography variant="h6">Ads List</Typography>
         </Box>
 
-        {/* Table */}
-        <TableContainer component={Paper}>
-          <Table>
+        <TableContainer component={Paper} sx={{ borderRadius: 0 }}>
+          <Table sx={{ width: '100%' }}>
             <TableHead sx={{ bgcolor: '#D9D9D9' }}>
               <TableRow>
                 <TableCell sx={{ fontWeight: 'bold' }}>ID</TableCell>
-                <TableCell sx={{ fontWeight: 'bold', width: '20%' }}>MEDIA</TableCell> {/* Wider MEDIA column */}
+                <TableCell sx={{ fontWeight: 'bold', width: '20%' }}>MEDIA</TableCell>
                 <TableCell sx={{ fontWeight: 'bold' }}>TITLE</TableCell>
                 <TableCell sx={{ fontWeight: 'bold' }}>TIMESTAMP</TableCell>
                 <TableCell sx={{ fontWeight: 'bold' }}>FREQUENCY</TableCell>
@@ -137,7 +105,7 @@ function Ads() {
                         alt={`Media ${row.id}`}
                         style={{ width: '100px', height: 'auto', borderRadius: '4px' }}
                       />
-                    </TableCell>{' '}
+                    </TableCell>
                     <TableCell>{row.title}</TableCell>
                     <TableCell>{row.timestamp}</TableCell>
                     <TableCell>{row.frequency}</TableCell>
@@ -149,6 +117,7 @@ function Ads() {
           </Table>
         </TableContainer>
       </Box>
+
     </Container>
   );
 }

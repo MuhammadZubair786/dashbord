@@ -1,150 +1,110 @@
-import React from 'react'
+import React from 'react';
 import {
-    Container,
-    Box,
-    TextField,
-    Button,
-    Typography,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Paper,
-  } from '@mui/material';
-  
+  Container,
+  Box,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Grid,
+} from '@mui/material';
+import InputField from '../components/InputField';
+import { CustomFilledButton, CustomOutlinedButton } from '../components/Button';
+
 function NewsApi() {
-    const sampleData = [
-     
-      ];
+  const sampleData = [
+    // Add your sample data here
+  ];
+
   return (
     <Container>
-    <Box sx={{ bgcolor: 'white', p: 5, mb: 5, borderRadius: 2 }}>
+      <Box sx={{ bgcolor: 'white', p: { xs: 2, sm: 3, md: 4 }, mb: 5, borderRadius: 2 }}>
         {/* Heading */}
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 2, pl: 1 }}>
           Filters
         </Typography>
-        {/* First Row */}
-        <Box
-      sx={{
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' }, // Column on extra-small screens, row on medium screens and up
-        gap: 2,
-        mb: 2,
-        flexWrap: 'wrap', // Allows wrapping of items on smaller screens
-      }}
-    >
-      <TextField
-        fullWidth
-        label="Keyboard"
-        variant="outlined"
-        sx={{ flex: 1, minWidth: { xs: '100%', md: 'auto' } }}
-      />
-      <TextField
-        fullWidth
-        label="Select Source"
-        variant="outlined"
-        sx={{ flex: 1, minWidth: { xs: '100%', md: 'auto' } }}
-      />
-      <TextField
-        fullWidth
-        label="Select Language"
-        variant="outlined"
-        sx={{ flex: 1, minWidth: { xs: '100%', md: 'auto' } }}
-      />
-      <TextField
-        fullWidth
-        type='date'
-        label=""
-        variant="outlined"
-        sx={{ flex: 1, minWidth: { xs: '100%', md: 'auto' } }}
-      />
-    </Box>
 
-        {/* Second Row */}
+        {/* Filters Layout */}
         <Box
-      sx={{
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' }, // Column on extra-small screens, row on medium screens and up
-        gap: 2,
-        mb: 2,
-        flexWrap: 'wrap', // Allows wrapping of items on smaller screens
-      }}
-    >
-      <TextField
-        sx={{ flex: '0 1 250px', minWidth: { xs: '100%', md: '250px' } }}
-        label=""
-        type='date'
-        variant="outlined"
-      />
-      
-      <Button
-        sx={{
-          flex: '0 1 50px',
-          bgcolor: '#7367F0',
-          color: 'white',
-          minWidth: { xs: '100%', md: '120px' },
-          mt: { xs: 2, md: 0 } // Margin top on smaller screens
-        }}
-      >
-        Search
-      </Button>
-      
-      <Button
-        variant="outlined"
-        sx={{
-          flex: '0 1 50px',
-          bgcolor: 'transparent',
-          minWidth: { xs: '100%', md: '120px' },
-          mt: { xs: 2, md: 0 } // Margin top on smaller screens
-        }}
-      >
-        Reset
-      </Button>
-    </Box>
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 2,
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Grid container spacing={2} mb={2}>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="Keyboard" />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="Select Source" />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="Select Language" />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="YYYY-MM-DD" />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <InputField placeholder="YYYY-MM-DD" />
+            </Grid>
+
+            <Grid item xs={6} sm={3} md={1.5}>
+              <CustomFilledButton title={"Search"} />
+            </Grid>
+            <Grid item xs={6} sm={3} md={1.5}>
+              <CustomOutlinedButton title={"Reset"} />
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
 
-<Box sx={{ mb: 5 }} />
+      <Box sx={{ bgcolor: 'white', borderRadius: 2 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 3 }}>
+          <Typography variant="h6">News API List</Typography>
+        </Box>
 
-{/* Table Container */}
-<Box sx={{ bgcolor: 'white', p: 5, borderRadius: 2 }}>
-      {/* Table Heading */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h6">News ApI List</Typography>
-      </Box>
-
-      {/* Table */}
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead sx={{ bgcolor: '#D9D9D9' }}>
-            <TableRow>
-              <TableCell sx={{ fontWeight: 'bold' }}>IMAGE</TableCell>
-              <TableCell sx={{ fontWeight: 'bold' }}>TITLE</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sampleData.length === 0 ? (
+        <TableContainer component={Paper} sx={{ borderRadius: 0 }}>
+          <Table sx={{ width: '100%' }}>
+            <TableHead sx={{ bgcolor: '#D9D9D9' }}>
               <TableRow>
-                <TableCell colSpan={2} sx={{ textAlign: 'center', color: 'red' }}>
-                  Record Not Found
-                </TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>IMAGE</TableCell>
+                <TableCell sx={{ fontWeight: 'bold' }}>TITLE</TableCell>
               </TableRow>
-            ) : (
-              sampleData.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell>
-                    <img src={row.image} alt={row.title} width="80" />
+            </TableHead>
+            <TableBody>
+              {sampleData.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={2} sx={{ textAlign: 'center', color: 'red' }}>
+                    Record Not Found
                   </TableCell>
-                  <TableCell>{row.title}</TableCell>
                 </TableRow>
-              ))
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
-</Container>    )
+              ) : (
+                sampleData.map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell>
+                      <img
+                        src={row.image}
+                        alt={row.title}
+                        style={{ width: '100px', height: 'auto', borderRadius: '4px' }}
+                      />
+                    </TableCell>
+                    <TableCell>{row.title}</TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </Container>
+  );
 }
 
-export default NewsApi
+export default NewsApi;

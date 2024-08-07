@@ -23,16 +23,16 @@ const navConfig = [
   },
   {
     title: 'Rss',
-    path: '/dashboard/Rss',
+    // path: '/dashboard/Rss',
     icon: getIcon('eva:file-text-fill'),
     children: [
       {
         title: 'Rss Feed',
-        path: '/dashboard/Rss/feed1',
+        path: '/dashboard/Rss/feed',
       },
       {
         title: 'Rss Feed Items',
-        path: '/dashboard/Rss/feed2',
+        path: '/dashboard/Rss/feed-list',
       },
     ],
   },
@@ -74,18 +74,48 @@ const navConfig = [
   },
   {
     title: 'Users',
-    path: '/dashboard/user',
+    // path: '/dashboard/user',
     icon: getIcon('flowbite:users-solid'),
+    children: [
+      {
+        title: 'Subadmins',
+        path: '/dashboard/user/subadmin',
+      },
+      {
+        title: 'Roles&Permission',
+        path: '/dashboard/user/roles',
+      },
+    ],
   },
   {
     title: 'Settings',
-    path: '/dashboard/products',
+    // path: '/dashboard/products',
     icon: getIcon('ic:baseline-settings'),
+    children: [
+      {
+        title: "All Settings",
+        path: "/dashboard/setting/settings"
+      },
+      // {
+      //   title: "Roles&Permissions",
+      //   path: "/dashboard/setting/roles"
+      // },
+    ]
   },
   {
     title: 'Localization',
-    path: '/dashboard/blog',
+    // path: '/dashboard/blog',
     icon: getIcon('heroicons:language-solid'),
+    children: [
+      {
+        title: "Language",
+        path: "/dashboard/localization/language"
+      },
+      {
+        title: "Translation",
+        path: "/dashboard/localization/translation"
+      },
+    ]
   },
   // {
   //   title: 'login',

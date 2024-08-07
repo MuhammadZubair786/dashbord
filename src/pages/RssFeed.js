@@ -14,7 +14,7 @@ import {
     Paper,
   } from '@mui/material';
   
-function Res() {
+function RssFeed() {
     const sampleData = [
         {
           id: '1',
@@ -191,4 +191,4 @@ function Res() {
   </Container>  )
 }
 
-export default Res
+export default RssFeed
