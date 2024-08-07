@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, OutlinedInput } from '@mui/material';
+import { Box, OutlinedInput, Typography } from '@mui/material';
 import React from 'react';
 
 const CustomOutlinedInput = styled(OutlinedInput)(({ theme }) => ({
@@ -9,7 +9,7 @@ const CustomOutlinedInput = styled(OutlinedInput)(({ theme }) => ({
     marginRight: theme.spacing(1),
     border: "1px solid #00000040", // Black border by default
     borderRadius: "4px",
-    transition: " 0.3s ease", // Smooth transition for border color
+    transition: "0.3s ease", // Smooth transition for border color
     '&:hover .MuiOutlinedInput-notchedOutline': {
         borderColor: '#7367F0', // Border color on hover
     },
@@ -24,17 +24,22 @@ const CustomOutlinedInput = styled(OutlinedInput)(({ theme }) => ({
     '&:focus': {
         outline: "none", // Remove outline on focus
     },
-    // transition:"all 0.5s"
 }));
 
-const InputField = ({ value, placeholder, handleChange, type = "text" }) => {
+const InputField = ({ value, placeholder, handleChange, type = "text", label, sx }) => {
     return (
-        <Box>
+        <Box mb={2}>
+            {label && (
+                <Typography variant="body1" gutterBottom>
+                    {label}
+                </Typography>
+            )}
             <CustomOutlinedInput
                 value={value}
                 placeholder={placeholder}
                 onChange={handleChange}
                 type={type}
+                sx={{ marginLeft: label && 0, ...sx }}
             />
         </Box>
     );

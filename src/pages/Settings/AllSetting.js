@@ -11,6 +11,7 @@ import Maintenance from './Maintenance';
 import FacebookAds from './FacebookAds';
 import Admob from './Admob';
 import LiveandENews from './LiveandENews';
+import TranslationSetting from './TranslationSetting';
 
 
 function CustomTabPanel(props) {
@@ -53,6 +54,10 @@ function AllSetting() {
       component: <ShareSetting />,
     },
     {
+      name: "Translation Settings",
+      component: <TranslationSetting />,
+    },
+    {
       name: "Global Settings",
       component: <GlobalSetting />,
     },
@@ -93,18 +98,27 @@ function AllSetting() {
     setValue(newValue);
   };
   return (
-    <Box>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', border: "1px solid red", width: "60%", }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+    <Box sx={{ backgroundColor: "white" }}>
+      <Box sx={{ borderBottom: 1 }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+          variant="scrollable"
+        >
           {tabOptions && tabOptions.map((tab, index) => (
             <Tab label={tab.name} {...a11yProps(index)} />
           ))}</Tabs>
       </Box>
+
+
       {tabOptions && tabOptions.map((tab, index) => (
         <CustomTabPanel value={value} index={index}>
           {tab.component}
         </CustomTabPanel>
       ))}
+
+
     </Box>
   )
 }
