@@ -1,14 +1,21 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import InputField from '../../components/InputField';
 import { CustomFilledButton, CustomOutlinedButton } from '../../components/Button';
+import ToggleButton from '../../components/ToggleButton';
 
 function FacebookAds() {
+  const [Enablebtn, setEnablebtn] = useState(true)
+
   return (
     <Box p={3}>
 
       <Box>
         <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} md={6} lg={12} sx={{ mb: 1 }}>
+            <ToggleButton value={Enablebtn} handleChange={() => setEnablebtn(!Enablebtn)} onLabel={"Enable Facebook Ads"} offLabel={"Disable Facebook Ads"} />
+          </Grid>
+
           <Grid item xs={12} sm={6} md={6} lg={6}  >
             <InputField
               label="Facebook Ads Placement Id Android"
